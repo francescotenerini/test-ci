@@ -73,7 +73,7 @@ RUN apt-get update && apt-get install -y \
 
 # creating jenkins user
 ENV JENKINS_HOME /var/jenkins_home
-ENV PATH $JENKINS_HOME/diolocal/bin:$PATH
+ENV PATH /opt/pythonz/bin:$PATH
 
 # using tini as a zombies processes reaper
 ENV TINI_VERSION v0.13.2
@@ -110,11 +110,11 @@ RUN curl -fL "https://raw.githubusercontent.com/saghul/pythonz/pythonz-$PYTHONZ_
   && rm -rf $PYTHONZ_PATH/log/* \
   && find $PYTHONZ_PATH/pythons -name '*.pyc' -delete \
   && find $PYTHONZ_PATH/pythons -name '*.pyo' -delete \
-  && mkdir -p $JENKINS_HOME/diolocal/bin \
-  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON27_VERSION/bin/python2.7 $JENKINS_HOME/diolocal/bin/python2.7 \
-  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON34_VERSION/bin/python3.4 $JENKINS_HOME/diolocal/bin/python3.4 \
-  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON35_VERSION/bin/python3.5 $JENKINS_HOME/diolocal/bin/python3.5 \
-  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON36_VERSION/bin/python3.6 $JENKINS_HOME/diolocal/bin/python3.6
+  && mkdir -p /opt/pythonz/bin \
+  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON27_VERSION/bin/python2.7 /opt/pythonz/bin/python2.7 \
+  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON34_VERSION/bin/python3.4 /opt/pythonz/bin/python3.4 \
+  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON35_VERSION/bin/python3.5 /opt/pythonz/bin/python3.5 \
+  && ln -s $PYTHONZ_PATH/pythons/CPython-$PYTHON36_VERSION/bin/python3.6 /opt/pythonz/bin/python3.6
 
 
 #### Node Environment
